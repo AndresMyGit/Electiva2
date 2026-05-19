@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block title %}Login | Electiva III{% endblock %}
+{% block page_title %}Acceso seguro{% endblock %}
+
+{% block content %}
+<section class="auth-card">
+    <div class="auth-copy">
+        <span class="eyebrow">Plataforma web IoT</span>
+        <h2>Inicia sesion para entrar al centro de monitoreo</h2>
+        <p>
+            Tendras acceso al dashboard general, el monitoreo de dispositivos,
+            las alertas de calidad de energia y el historial de publicaciones en vivo.
+        </p>
+
+        <div class="info-panel">
+            <h3>Credenciales iniciales</h3>
+            <p><strong>Correo:</strong> admin@electiva3.com</p>
+            <p><strong>Contrasena:</strong> Ta.1006877358</p>
+            <p class="muted-text">
+                El usuario administrador se crea automaticamente cuando PostgreSQL
+                queda configurado y el proyecto se inicia por primera vez.
+            </p>
+        </div>
+    </div>
+
+    <form class="auth-form" method="post">
+        <h3>Acceso</h3>
+        <label>
+            Correo
+            <input type="email" name="email" placeholder="admin@electiva3.com" required>
+        </label>
+        <label>
+            Contrasena
+            <input type="password" name="password" placeholder="••••••••" required>
+        </label>
+        <button type="submit" class="primary-button">Entrar al dashboard</button>
+        <p class="muted-text">
+            Fondo blanco con componentes azules, listo para usar sobre PostgreSQL.
+        </p>
+    </form>
+</section>
+{% endblock %}
+

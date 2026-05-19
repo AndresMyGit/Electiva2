@@ -1,0 +1,128 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard | Electiva III{% endblock %}
+{% block page_title %}Dashboard principal{% endblock %}
+
+{% block content %}
+<section class="hero-panel">
+    <div>
+        <span class="eyebrow">Vista ejecutiva</span>
+        <h3>Resumen operativo de la red de distribucion electrica</h3>
+        <p>
+            Esta vista concentra el estado de los publishers virtuales del proyecto,
+            la calidad de energia por elemento, las alertas recientes y el historial vivo.
+        </p>
+    </div>
+    <div class="hero-badge">
+        <strong>Actualizacion automatica</strong>
+        <span>Cada 5 segundos</span>
+    </div>
+</section>
+
+<div id="dashboardNotice" class="notice notice-info hidden"></div>
+
+<section class="metric-grid">
+    <article class="metric-card">
+        <span>Publishers activos</span>
+        <strong id="metricActivePublishers">--</strong>
+    </article>
+    <article class="metric-card">
+        <span>Publishers en pausa</span>
+        <strong id="metricPausedPublishers">--</strong>
+    </article>
+    <article class="metric-card">
+        <span>Puntos en advertencia</span>
+        <strong id="metricWarningPoints">--</strong>
+    </article>
+    <article class="metric-card">
+        <span>Puntos criticos</span>
+        <strong id="metricCriticalPoints">--</strong>
+    </article>
+    <article class="metric-card">
+        <span>Publicaciones ultima hora</span>
+        <strong id="metricPublications">--</strong>
+    </article>
+    <article class="metric-card">
+        <span>Alertas ultimas 24h</span>
+        <strong id="metricAlertsDay">--</strong>
+    </article>
+    <article class="metric-card">
+        <span>Carga promedio</span>
+        <strong id="metricAvgLoad">--</strong>
+    </article>
+    <article class="metric-card">
+        <span>Energia acumulada</span>
+        <strong id="metricEnergy">--</strong>
+    </article>
+</section>
+
+<section class="content-grid two-columns">
+    <article class="panel-card">
+        <div class="section-heading">
+            <div>
+                <span class="eyebrow">Publishers</span>
+                <h3>Estado por punto</h3>
+            </div>
+        </div>
+        <div class="table-shell scroll-region">
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Punto</th>
+                        <th>Ubicacion</th>
+                        <th>Estado</th>
+                        <th>Ultima lectura</th>
+                    </tr>
+                </thead>
+                <tbody id="pointSummaryBody"></tbody>
+            </table>
+        </div>
+    </article>
+
+    <article class="panel-card">
+        <div class="section-heading">
+            <div>
+                <span class="eyebrow">Red electrica</span>
+                <h3>Calidad de energia reciente</h3>
+            </div>
+        </div>
+        <div class="table-shell scroll-region">
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Elemento</th>
+                        <th>Voltaje</th>
+                        <th>Carga</th>
+                        <th>THDi</th>
+                        <th>FP</th>
+                    </tr>
+                </thead>
+                <tbody id="qualitySummaryBody"></tbody>
+            </table>
+        </div>
+    </article>
+    <article class="panel-card">
+        <div class="section-heading">
+            <div>
+                <span class="eyebrow">Alertas</span>
+                <h3>Eventos recientes</h3>
+            </div>
+        </div>
+        <div id="recentAlertsList" class="stack-list scroll-region"></div>
+    </article>
+
+    <article class="panel-card">
+        <div class="section-heading">
+            <div>
+                <span class="eyebrow">Publicaciones en vivo</span>
+                <h3>Ultimos mensajes</h3>
+            </div>
+        </div>
+        <div id="recentPublicationsList" class="stack-list scroll-region"></div>
+    </article>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script type="module" src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+{% endblock %}

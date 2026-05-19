@@ -1,0 +1,107 @@
+{% extends "base.html" %}
+
+{% block title %}Monitoreo | Electiva III{% endblock %}
+{% block page_title %}Monitoreo de la red{% endblock %}
+
+{% block content %}
+<section class="hero-panel">
+    <div>
+        <span class="eyebrow">Vista operativa</span>
+        <h3>Supervision de publishers y graficas de calidad de energia</h3>
+        <p>
+            Desde aqui puedes identificar el estado de la barra principal,
+            reconectadores y transformadores, revisar sus tendencias y pausar cada simulador.
+        </p>
+    </div>
+    <div class="hero-badge">
+        <strong>Control manual</strong>
+        <span>Pausa y reactivacion</span>
+    </div>
+</section>
+
+<div id="monitoringNotice" class="notice notice-info hidden"></div>
+
+<section class="monitoring-layout">
+    <article class="panel-card">
+        <div class="section-heading">
+            <div>
+                <span class="eyebrow">Publishers</span>
+                <h3>Puntos activos del proyecto</h3>
+            </div>
+        </div>
+        <div id="publisherCardGrid" class="device-grid scroll-region"></div>
+    </article>
+
+    <article class="panel-card detail-panel">
+        <div class="section-heading">
+            <div>
+                <span class="eyebrow">Detalle</span>
+                <h3 id="selectedPointTitle">Selecciona un publisher</h3>
+            </div>
+            <span id="selectedPointStatus" class="status-pill neutral">Sin datos</span>
+        </div>
+
+        <div class="detail-metrics">
+            <div class="mini-metric">
+                <span>Voltaje</span>
+                <strong id="selectedVoltage">--</strong>
+            </div>
+            <div class="mini-metric">
+                <span>Corriente</span>
+                <strong id="selectedCurrent">--</strong>
+            </div>
+            <div class="mini-metric">
+                <span>Carga</span>
+                <strong id="selectedLoad">--</strong>
+            </div>
+            <div class="mini-metric">
+                <span>Energia</span>
+                <strong id="selectedEnergy">--</strong>
+            </div>
+        </div>
+
+        <div class="chart-grid">
+            <section class="chart-card">
+                <div class="chart-header">
+                    <h4>Voltaje</h4>
+                    <span id="selectedTimestamp">--</span>
+                </div>
+                <canvas id="voltageChart" width="500" height="220"></canvas>
+            </section>
+            <section class="chart-card">
+                <div class="chart-header">
+                    <h4>Carga</h4>
+                    <span>Porcentaje operativo</span>
+                </div>
+                <canvas id="loadChart" width="500" height="220"></canvas>
+            </section>
+            <section class="chart-card">
+                <div class="chart-header">
+                    <h4>THDi</h4>
+                    <span>Distorsion armonica</span>
+                </div>
+                <canvas id="thdiChart" width="500" height="220"></canvas>
+            </section>
+        </div>
+
+        <div class="table-shell compact-shell scroll-region">
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Momento</th>
+                        <th>Voltaje</th>
+                        <th>Corriente</th>
+                        <th>Carga</th>
+                        <th>Estado</th>
+                    </tr>
+                </thead>
+                <tbody id="selectedHistoryBody"></tbody>
+            </table>
+        </div>
+    </article>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script type="module" src="{{ url_for('static', filename='js/monitoring.js') }}"></script>
+{% endblock %}
