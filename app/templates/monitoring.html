@@ -1,16 +1,16 @@
 {% extends "base.html" %}
 
 {% block title %}Monitoreo | Electiva III{% endblock %}
-{% block page_title %}Monitoreo de la red{% endblock %}
+{% block page_title %}Monitoreo en tiempo real{% endblock %}
 
 {% block content %}
 <section class="hero-panel">
     <div>
         <span class="eyebrow">Vista operativa</span>
-        <h3>Supervision de publishers y graficas de calidad de energia</h3>
+        <h3>Supervision de publishers y estado de la red electrica</h3>
         <p>
-            Desde aqui puedes identificar el estado de la barra principal,
-            reconectadores y transformadores, revisar sus tendencias y pausar cada simulador.
+            Consulta el estado de la barra principal, reconectadores y transformadores,
+            revisa tendencias y controla cada simulador desde un panel mas claro.
         </p>
     </div>
     <div class="hero-badge">
@@ -22,14 +22,14 @@
 <div id="monitoringNotice" class="notice notice-info hidden"></div>
 
 <section class="monitoring-layout">
-    <article class="panel-card">
+    <article class="panel-card publishers-panel">
         <div class="section-heading">
             <div>
                 <span class="eyebrow">Publishers</span>
                 <h3>Puntos activos del proyecto</h3>
             </div>
         </div>
-        <div id="publisherCardGrid" class="device-grid scroll-region"></div>
+        <div id="publisherCardGrid" class="device-grid device-grid-horizontal scroll-region"></div>
     </article>
 
     <article class="panel-card detail-panel">

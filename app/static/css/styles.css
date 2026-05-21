@@ -3,20 +3,20 @@ html {
 }
 
 :root {
-    --bg: #f8fbff;
+    --bg: #f3f7ff;
     --surface: #ffffff;
-    --surface-soft: #eef5ff;
-    --surface-strong: #dbeafe;
-    --line: #d6e6fb;
-    --primary: #1d4ed8;
+    --surface-soft: #edf3ff;
+    --surface-strong: #d8e5ff;
+    --line: #cfdcf3;
+    --primary: #1f4fcf;
     --primary-deep: #1e3a8a;
     --accent: #0ea5e9;
     --text: #0f172a;
     --muted: #475569;
     --success: #0f766e;
-    --warning: #d97706;
-    --danger: #dc2626;
-    --shadow: 0 22px 50px rgba(37, 99, 235, 0.12);
+    --warning: #b45309;
+    --danger: #b91c1c;
+    --shadow: 0 20px 46px rgba(30, 64, 175, 0.14);
     --radius-lg: 28px;
     --radius-md: 18px;
     --radius-sm: 12px;
@@ -36,7 +36,7 @@ body {
     background:
         radial-gradient(circle at top left, rgba(96, 165, 250, 0.20), transparent 32%),
         radial-gradient(circle at right center, rgba(14, 165, 233, 0.12), transparent 30%),
-        linear-gradient(180deg, #ffffff 0%, #f8fbff 54%, #edf5ff 100%);
+        linear-gradient(180deg, #f7faff 0%, #edf3ff 58%, #e6efff 100%);
     overflow: hidden;
 }
 
@@ -341,6 +341,10 @@ a {
     align-items: start;
 }
 
+.alerts-layout {
+    grid-template-columns: minmax(0, 1fr);
+}
+
 .two-columns {
     grid-template-columns: repeat(2, minmax(0, 1fr));
 }
@@ -353,6 +357,7 @@ a {
     min-width: 0;
     min-height: 0;
     overflow: hidden;
+    margin-top: 20px;
 }
 
 .section-heading,
@@ -480,7 +485,7 @@ a {
 
 .monitoring-layout {
     display: grid;
-    grid-template-columns: 360px 1fr;
+    grid-template-columns: minmax(0, 1fr);
     gap: 18px;
     min-width: 0;
     align-items: start;
@@ -490,6 +495,24 @@ a {
     display: grid;
     gap: 14px;
     min-width: 0;
+}
+
+.publishers-panel {
+    gap: 14px;
+}
+
+.device-grid-horizontal {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: minmax(250px, 1fr);
+    align-items: stretch;
+}
+
+.device-grid-horizontal.scroll-region {
+    max-height: none;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding-bottom: 6px;
 }
 
 .device-card {
@@ -525,12 +548,16 @@ a {
 }
 
 .toggle-button,
-.primary-button {
+.primary-button,
+.link-button {
     border: none;
     border-radius: 999px;
     padding: 11px 16px;
     font-weight: 700;
     cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .primary-button {
@@ -542,6 +569,20 @@ a {
     background: var(--surface-soft);
     color: var(--primary-deep);
     border: 1px solid var(--line);
+}
+
+.link-button {
+    border: 1px solid transparent;
+}
+
+.whatsapp-button {
+    background: linear-gradient(135deg, #16a34a, #22c55e);
+    color: white;
+}
+
+.whatsapp-button.is-disabled {
+    opacity: 0.55;
+    pointer-events: none;
 }
 
 .detail-panel {
@@ -696,12 +737,15 @@ canvas {
     border-radius: 36px;
     padding: 30px;
     display: grid;
-    grid-template-columns: 1.2fr 0.9fr;
+    grid-template-columns: 1fr 0.95fr;
     gap: 26px;
 }
 
 .auth-copy {
     padding: 18px;
+    display: grid;
+    align-content: center;
+    gap: 12px;
 }
 
 .auth-form {
